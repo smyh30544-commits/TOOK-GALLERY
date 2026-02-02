@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سبد خرید - فروشگاه آنلاین</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- منوی همبرگر -->
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> صفحه اصلی</a></li>
+                <li><a href="index.html#categories"><i class="fas fa-list"></i> دسته‌بندی‌ها</a></li>
+                <li><a href="index.html#special-offers"><i class="fas fa-fire"></i> فروش ویژه</a></li>
+                <li><a href="index.html#new-products"><i class="fas fa-tag"></i> محصولات جدید</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> پروفایل</a></li>
+                <li><a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> سبد خرید</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> علاقه‌مندی‌ها</a></li>
+                <li><a href="admin-login.html"><i class="fas fa-headset"></i> ورود پشتیبان</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- هدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>سبد خرید</h1>
+                </div>
+                <div class="header-icons">
+                    <a href="index.html" class="icon-link">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="profile.html" class="icon-link">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای سبد خرید -->
+    <main class="container">
+        <div class="cart-container">
+            <div class="cart-items">
+                <h2 class="section-title">محصولات انتخابی شما</h2>
+                
+                <div class="cart-item">
+                    <div class="item-image">تصویر 1</div>
+                    <div class="item-details">
+                        <h3>محصول ویژه 1</h3>
+                        <p class="item-color">رنگ: صورتی</p>
+                        <p class="item-price">150,000 تومان</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="item-total">150,000 تومان</div>
+                    <button class="item-remove"><i class="fas fa-trash"></i></button>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">تصویر 2</div>
+                    <div class="item-details">
+                        <h3>محصول جدید 3</h3>
+                        <p class="item-color">رنگ: آبی</p>
+                        <p class="item-price">95,000 تومان</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                        <span class="qty-value">2</span>
+                        <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="item-total">190,000 تومان</div>
+                    <button class="item-remove"><i class="fas fa-trash"></i></button>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="item-image">تصویر 3</div>
+                    <div class="item-details">
+                        <h3>محصول ویژه 2</h3>
+                        <p class="item-color">رنگ: سبز</p>
+                        <p class="item-price">230,000 تومان</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="item-total">230,000 تومان</div>
+                    <button class="item-remove"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2 class="section-title">خلاصه سفارش</h2>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>جمع کل:</span>
+                        <span>570,000 تومان</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>تخفیف:</span>
+                        <span class="discount">-30,000 تومان</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>هزینه ارسال:</span>
+                        <span>30,000 تومان</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>مبلغ قابل پرداخت:</span>
+                        <span class="final-price">570,000 تومان</span>
+                    </div>
+                </div>
+                
+                <a href="checkout.html" class="btn btn-primary checkout-btn">
+                    <i class="fas fa-shopping-bag"></i> تکمیل خرید
+                </a>
+                
+                <a href="index.html" class="continue-shopping">
+                    <i class="fas fa-arrow-right"></i> ادامه خرید
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- دکمه پشتیبان -->
+    <div class="support-circle">
+        <div class="support-icon">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="support-modal">
+            <div class="modal-header">
+                <h3>پشتیبانی آنلاین</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message received">
+                            <p>سلام! چطور می‌توانم کمک کنم؟</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="پیام خود را بنویسید...">
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="admin-access">
+                    <a href="admin-login.html" class="admin-login-link">
+                        <i class="fas fa-lock"></i> ورود پشتیبان
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+                                                                                    </html>
