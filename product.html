@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزئیات محصول - فروشگاه آنلاین</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- منوی همبرگر -->
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> صفحه اصلی</a></li>
+                <li><a href="index.html#categories"><i class="fas fa-list"></i> دسته‌بندی‌ها</a></li>
+                <li><a href="index.html#special-offers"><i class="fas fa-fire"></i> فروش ویژه</a></li>
+                <li><a href="index.html#new-products"><i class="fas fa-tag"></i> محصولات جدید</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> پروفایل</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> سبد خرید</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> علاقه‌مندی‌ها</a></li>
+                <li><a href="admin-login.html"><i class="fas fa-headset"></i> ورود پشتیبان</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- هدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>فروشگاه آنلاین</h1>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="جستجوی محصولات...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-icons">
+                    <a href="#" class="icon-link">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge">2</span>
+                    </a>
+                    <a href="cart.html" class="icon-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="profile.html" class="icon-link">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای صفحه محصول -->
+    <main class="container">
+        <div class="product-details">
+            <div class="product-gallery">
+                <div class="main-image">تصویر اصلی محصول</div>
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">محصول ویژه 1</h1>
+                <p class="product-price">150,000 تومان</p>
+                <p class="product-description">این یک توضیح نمونه برای محصول است. این محصول دارای ویژگی‌های خاصی است که آن را از دیگر محصولات متمایز می‌کند.</p>
+                
+                <div class="color-selector">
+                    <h3>رنگ محصول:</h3>
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #ff6b9d;"></div>
+                        <div class="color-option" style="background-color: #3498db;"></div>
+                        <div class="color-option" style="background-color: #2ecc71;"></div>
+                        <div class="color-option" style="background-color: #f1c40f;"></div>
+                    </div>
+                </div>
+                
+                <div class="quantity-selector">
+                    <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها
+                    </button>
+                </div>
+                
+                <div class="specifications">
+                    <h3>مشخصات محصول:</h3>
+                    <table class="specs-table">
+                        <tr><td>مدل:</td><td>مدل 2024</td></tr>
+                        <tr><td>جنس:</td><td>پلی‌مر با کیفیت</td></tr>
+                        <tr><td>ابعاد:</td><td>10 × 15 × 5 سانتی‌متر</td></tr>
+                        <tr><td>وزن:</td><td>250 گرم</td></tr>
+                        <tr><td>گارانتی:</td><td>18 ماه</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <section class="reviews-section">
+            <h2 class="section-title">نظرات کاربران</h2>
+            <div class="reviews">
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">علی محمدی</span>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">محصول بسیار با کیفیتی است. کاملاً راضی هستم.</p>
+                    <span class="review-date">۱۴۰۳/۰۵/۱۰</span>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">فاطمه کریمی</span>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">بسته‌بندی عالی، کیفیت فوق‌العاده. پیشنهاد می‌کنم.</p>
+                    <span class="review-date">۱۴۰۳/۰۵/۰۸</span>
+                </div>
+            </div>
+            
+            <div class="add-review">
+                <h3>ثبت نظر جدید</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="نظر خود را بنویسید..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>امتیاز:</label>
+                        <div class="rating-input">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ثبت نظر</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- دکمه پشتیبان -->
+    <div class="support-circle">
+        <div class="support-icon">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="support-modal">
+            <div class="modal-header">
+                <h3>پشتیبانی آنلاین</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message received">
+                            <p>سلام! چطور می‌توانم کمک کنم؟</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="پیام خود را بنویسید...">
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="admin-access">
+                    <a href="admin-login.html" class="admin-login-link">
+                        <i class="fas fa-lock"></i> ورود پشتیبان
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
+</body>
+  </html>
