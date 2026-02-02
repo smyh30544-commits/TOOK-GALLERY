@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود پشتیبان - فروشگاه آنلاین</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1><i class="fas fa-shield-alt"></i> ورود پشتیبان</h1>
+                <p>لطفاً اطلاعات حساب خود را وارد کنید</p>
+            </div>
+            
+            <form id="admin-login-form">
+                <div class="login-step active" id="step1">
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> نام کاربری:</label>
+                        <input type="text" id="username" class="form-control" placeholder="نام کاربری خود را وارد کنید" required>
+                    </div>
+                    <button type="button" class="btn btn-primary next-step" data-next="step2">
+                        ادامه <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="login-step" id="step2">
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> رمز عبور:</label>
+                        <input type="password" id="password" class="form-control" placeholder="رمز عبور خود را وارد کنید" required>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-secondary prev-step" data-prev="step1">
+                            <i class="fas fa-arrow-right"></i> بازگشت
+                        </button>
+                        <button type="button" class="btn btn-primary next-step" data-next="step3">
+                            ادامه <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="login-step" id="step3">
+                    <div class="form-group">
+                        <label for="security-code"><i class="fas fa-key"></i> کد امنیتی:</label>
+                        <input type="text" id="security-code" class="form-control" placeholder="کد ۶ رقمی ارسال شده" maxlength="6" required>
+                        <div class="security-code-display">
+                            <div class="code-digit">8</div><div class="code-digit">4</div><div class="code-digit">1</div>
+                            <div class="code-digit">9</div><div class="code-digit">3</div><div class="code-digit">7</div>
+                        </div>
+                        <small class="form-text">کد بالا را در فیلد وارد کنید</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>سؤال امنیتی: رنگ مورد علاقه شما چیست؟</label>
+                        <div class="security-options">
+                            <div class="security-option">
+                                <input type="radio" id="security-red" name="security" value="red">
+                                <label for="security-red">قرمز</label>
+                            </div>
+                            <div class="security-option">
+                                <input type="radio" id="security-blue" name="security" value="blue">
+                                <label for="security-blue">آبی</label>
+                            </div>
+                            <div class="security-option">
+                                <input type="radio" id="security-green" name="security" value="green">
+                                <label for="security-green">سبز</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-secondary prev-step" data-prev="step2">
+                            <i class="fas fa-arrow-right"></i> بازگشت
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-sign-in-alt"></i> ورود به پنل
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p><a href="index.html"><i class="fas fa-home"></i> بازگشت به سایت</a></p>
+                <div class="security-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <span>این صفحه فقط برای دسترسی پشتیبانان مجاز است.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
