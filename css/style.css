@@ -12,6 +12,7 @@ body {
     min-height: 100vh;
     color: #333;
     line-height: 1.6;
+    position: relative;
 }
 
 .container {
@@ -100,6 +101,8 @@ header {
     background-color: white;
     padding: 15px 0;
     border-bottom: 2px solid #ffeff5;
+    position: relative;
+    z-index: 998;
 }
 
 .header-content {
@@ -188,6 +191,8 @@ header {
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid #ffeff5;
+    display: flex;
+    align-items: center;
 }
 
 /* دسته‌بندی‌ها */
@@ -239,85 +244,170 @@ header {
     margin-bottom: 20px;
 }
 
-.slider-controls {
-    display: flex;
-    gap: 10px;
-}
-
-.slider-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ff6b9d;
-    color: white;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-
-.slider-btn:hover {
-    background-color: #ff4d87;
-}
-
 .products-slider {
     overflow: hidden;
     position: relative;
+    padding: 10px 0;
+    margin: 0 -10px;
 }
 
 .slider-container {
     overflow: hidden;
+    position: relative;
 }
 
 .slider-track {
     display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease;
+    gap: 25px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 10px;
 }
 
 .product-card {
-    min-width: 250px;
-    background-color: white;
-    border-radius: 12px;
+    min-width: 280px;
+    background: white;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-    border: 1px solid #ffeff5;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.15);
+    transition: all 0.4s ease;
+    border: 2px solid #ffeff5;
+    flex-shrink: 0;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.15);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.25);
+    border-color: #ff6b9d;
 }
 
 .product-img {
-    height: 200px;
-    background-color: #ffeff5;
+    height: 220px;
+    background: linear-gradient(135deg, #ffeff5 0%, #ffe4ec 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ff6b9d;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img::after {
+    content: 'تصویر محصول';
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(255, 107, 157, 0.9);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .product-info {
-    padding: 15px;
+    padding: 20px;
 }
 
 .product-info h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 19px;
+    margin-bottom: 12px;
     color: #333;
+    height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .price {
     color: #ff6b9d;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.original-price {
+    color: #999;
+    font-size: 16px;
+    text-decoration: line-through;
+    font-weight: normal;
+}
+
+.discount-badge {
+    background: #ff6b9d;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+}
+
+/* دکمه‌های کنترل اسلایدر */
+.slider-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.slider-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    border: none;
     font-size: 20px;
-    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+}
+
+.slider-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+}
+
+.slider-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.slider-btn.prev-btn i {
+    transform: rotate(180deg);
+}
+
+/* نقاط ناوبری */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background: #ff6b9d;
+    transform: scale(1.3);
 }
 
 /* محصولات جدید */
@@ -356,20 +446,25 @@ header {
 }
 
 .support-modal {
-    position: absolute;
-    bottom: 80px;
-    left: 0;
-    width: 350px;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 400px !important;
+    max-width: 90vw !important;
+    max-height: 80vh !important;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    display: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    display: none !important;
     overflow: hidden;
     border: 2px solid #ff6b9d;
+    z-index: 1000 !important;
 }
 
 .support-modal.active {
-    display: block;
+    display: block !important;
+    animation: fadeIn 0.3s ease !important;
 }
 
 .modal-header {
@@ -417,6 +512,11 @@ header {
 .message.received {
     background-color: #ffeff5;
     margin-right: auto;
+}
+
+.message.sent {
+    background-color: #e3f2fd;
+    margin-left: auto;
 }
 
 .chat-input {
@@ -1224,25 +1324,33 @@ header {
 }
 
 /* مودال‌ها */
-.password-modal {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
+    z-index: 999;
+    display: none;
 }
 
-.password-modal .modal-content {
+.modal-overlay.active {
+    display: block;
+}
+
+.password-modal .modal-content,
+.address-form-modal .modal-content {
     background: white;
     padding: 30px;
     border-radius: 15px;
     width: 90%;
     max-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 /* استایل‌های عمومی */
@@ -1285,4 +1393,439 @@ header {
 
 .section {
     animation: fadeIn 0.5s ease;
+}
+
+@keyframes slideDown {
+    from { top: -100px; opacity: 0; }
+    to { top: 30px; opacity: 1; }
+}
+
+/* نوتیفیکیشن */
+.notification {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideDown 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.close-notif {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* استایل‌های مخصوص سیستم ورود */
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #ffeff5 0%, #ffe4ec 100%);
+}
+
+.auth-box {
+    background: white;
+    border-radius: 25px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 50px rgba(255, 107, 157, 0.2);
+    border: 3px solid #ff6b9d;
+    text-align: center;
+    animation: fadeInUp 0.6s ease;
+}
+
+.auth-header {
+    margin-bottom: 40px;
+}
+
+.auth-header h1 {
+    color: #ff6b9d;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.auth-tab.active {
+    color: #ff6b9d;
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: #ff6b9d;
+    border-radius: 3px 3px 0 0;
+}
+
+.auth-form {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 15px;
+    text-align: right;
+}
+
+.password-toggle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.terms-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.terms-check label {
+    font-size: 14px;
+    color: #555;
+}
+
+.terms-check a {
+    color: #ff6b9d;
+    text-decoration: none;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+}
+
+.divider {
+    margin: 30px 0;
+    text-align: center;
+    position: relative;
+    color: #999;
+    font-size: 14px;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: #eee;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: #eee;
+}
+
+.continue-guest {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.continue-guest:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* استایل‌های مخصوص پنل کاربری */
+.dashboard-container {
+    padding: 40px 0;
+    min-height: 70vh;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    border: 4px solid white;
+}
+
+.user-info h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.user-info p {
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 2px solid #ffeff5;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.1);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: #ffeff5;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: #ff6b9d;
+    font-size: 24px;
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    color: #666;
+    font-size: 15px;
+}
+
+.recent-orders {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+.empty-state i {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.empty-state h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.logout-btn {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: white;
+    color: #ff6b9d;
+}
+
+/* تب‌های پروفایل */
+.profile-tabs {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.profile-tab {
+    padding: 15px 30px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.profile-tab.active {
+    color: #ff6b9d;
+}
+
+.profile-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff6b9d;
+}
+
+.profile-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.profile-content.active {
+    display: block;
+}
+
+/* فرم ویرایش پروفایل */
+.profile-form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.account-security {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.account-security h3 {
+    margin-bottom: 20px;
 }
