@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه آنلاین - صفحه اصلی</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- منوی همبرگر -->
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> صفحه اصلی</a></li>
+                <li><a href="#categories"><i class="fas fa-list"></i> دسته‌بندی‌ها</a></li>
+                <li><a href="#special-offers"><i class="fas fa-fire"></i> فروش ویژه</a></li>
+                <li><a href="#new-products"><i class="fas fa-tag"></i> محصولات جدید</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> حساب کاربری</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> سبد خرید</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> علاقه‌مندی‌ها</a></li>
+                <li><a href="admin-login.html"><i class="fas fa-headset"></i> ورود پشتیبان</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- نوار هدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>فروشگاه آنلاین</h1>
+                </div>
+                
+                <!-- بخش جستجو -->
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="جستجوی محصولات...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <!-- آیکون‌های هدر -->
+                <div class="header-icons">
+                    <a href="#" class="icon-link">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="wishlist-count" style="display: none;">0</span>
+                    </a>
+                    <a href="cart.html" class="icon-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cart-count" style="display: none;">0</span>
+                    </a>
+                    <a href="profile.html" class="icon-link">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای اصلی -->
+    <main class="container">
+        <!-- دسته‌بندی محصولات -->
+        <section id="categories" class="section">
+            <h2 class="section-title">دسته‌بندی محصولات</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">1</div>
+                    <h3>الکترونیک</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">2</div>
+                    <h3>پوشاک</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">3</div>
+                    <h3>خانه و آشپزخانه</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">4</div>
+                    <h3>کالای دیجیتال</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- فروش ویژه (کشویی) -->
+        <section id="special-offers" class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-fire" style="color: #ff6b9d; margin-left: 10px;"></i>
+                    فروش ویژه
+                    <span class="badge" style="background: #ff6b9d; margin-right: 15px; font-size: 14px;">۴ محصول</span>
+                </h2>
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn" id="prev-btn" aria-label="محصول قبلی">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="slider-btn next-btn" id="next-btn" aria-label="محصول بعدی">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="products-slider">
+                <div class="slider-container" id="slider-container">
+                    <div class="slider-track" id="slider-track">
+                        <!-- محصول ۱ -->
+                        <div class="product-card">
+                            <div class="discount-badge">۳۰٪ تخفیف</div>
+                            <div class="product-img">
+                                <span>ویژه ۱</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>گوشی موبایل هوشمند مدل X۲۰</h3>
+                                <div class="price">
+                                    <span>۲,۳۵۰,۰۰۰ تومان</span>
+                                    <span class="original-price">۳,۳۵۰,۰۰۰</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" data-product-id="1" style="width: 100%; margin-top: 15px;">
+                                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- محصول ۲ -->
+                        <div class="product-card">
+                            <div class="discount-badge">۲۵٪ تخفیف</div>
+                            <div class="product-img">
+                                <span>ویژه ۲</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>لپ‌تاپ گیمینگ پیشرفته ۱۶ گیگ</h3>
+                                <div class="price">
+                                    <span>۱۸,۹۰۰,۰۰۰ تومان</span>
+                                    <span class="original-price">۲۵,۲۰۰,۰۰۰</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" data-product-id="2" style="width: 100%; margin-top: 15px;">
+                                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- محصول ۳ -->
+                        <div class="product-card">
+                            <div class="discount-badge">۴۰٪ تخفیف</div>
+                            <div class="product-img">
+                                <span>ویژه ۳</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>هدفون بی‌سیم نویزکنسلینگ</h3>
+                                <div class="price">
+                                    <span>۱,۱۵۰,۰۰۰ تومان</span>
+                                    <span class="original-price">۱,۹۵۰,۰۰۰</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" data-product-id="3" style="width: 100%; margin-top: 15px;">
+                                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- محصول ۴ -->
+                        <div class="product-card">
+                            <div class="discount-badge">۱۵٪ تخفیف</div>
+                            <div class="product-img">
+                                <span>ویژه ۴</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>ساعت هوشمند با سنسور سلامت</h3>
+                                <div class="price">
+                                    <span>۱,۸۵۰,۰۰۰ تومان</span>
+                                    <span class="original-price">۲,۱۵۰,۰۰۰</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" data-product-id="4" style="width: 100%; margin-top: 15px;">
+                                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- محصول ۵ -->
+                        <div class="product-card">
+                            <div class="discount-badge">۲۰٪ تخفیف</div>
+                            <div class="product-img">
+                                <span>ویژه ۵</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>دوربین دیجیتال حرفه‌ای ۴K</h3>
+                                <div class="price">
+                                    <span>۳,۷۵۰,۰۰۰ تومان</span>
+                                    <span class="original-price">۴,۷۵۰,۰۰۰</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart-btn" data-product-id="5" style="width: 100%; margin-top: 15px;">
+                                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نقاط ناوبری -->
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
+        </section>
+
+        <!-- محصولات جدید -->
+        <section id="new-products" class="section">
+            <h2 class="section-title">محصولات جدید</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">تصویر ۶</div>
+                    <div class="product-info">
+                        <h3>کیبورد مکانیکی RGB</h3>
+                        <p class="price">۸۵۰,۰۰۰ تومان</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="6">افزودن به سبد</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">تصویر ۷</div>
+                    <div class="product-info">
+                        <h3>ماوس گیمینگ بی‌سیم</h3>
+                        <p class="price">۶۲۰,۰۰۰ تومان</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="7">افزودن به سبد</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">تصویر ۸</div>
+                    <div class="product-info">
+                        <h3>پاوربانک ۲۰۰۰۰mAh</h3>
+                        <p class="price">۳۵۰,۰۰۰ تومان</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="8">افزودن به سبد</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">تصویر ۹</div>
+                    <div class="product-info">
+                        <h3>هارد اکسترنال ۲TB</h3>
+                        <p class="price">۱,۴۰۰,۰۰۰ تومان</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-product-id="9">افزودن به سبد</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- دکمه پشتیبان -->
+    <div class="support-circle">
+        <div class="support-icon">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="support-modal">
+            <div class="modal-header">
+                <h3>پشتیبانی آنلاین</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message received">
+                            <p>سلام! چطور می‌توانم کمک کنم؟</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="پیام خود را بنویسید...">
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="admin-access">
+                    <a href="admin-login.html" class="admin-login-link">
+                        <i class="fas fa-lock"></i> ورود پشتیبان
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay برای مودال -->
+    <div class="modal-overlay"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
