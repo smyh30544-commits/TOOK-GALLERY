@@ -47,6 +47,39 @@
         grid-column: 2;
         justify-self: start;
     }
+    
+    /* اسلایدر در تبلت */
+    .product-card {
+        min-width: 220px !important;
+    }
+    
+    .product-img {
+        height: 180px;
+    }
+    
+    .product-info h3 {
+        font-size: 17px;
+        height: 44px;
+    }
+    
+    .price {
+        font-size: 19px;
+    }
+    
+    /* پروفایل در تبلت */
+    .user-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .logout-btn {
+        position: static;
+        margin-top: 15px;
+    }
 }
 
 /* رسپانسیو برای موبایل */
@@ -65,7 +98,8 @@
     
     .support-modal {
         width: 300px;
-        left: -120px;
+        left: 50%;
+        transform: translateX(-50%) !important;
     }
     
     .section-title {
@@ -97,14 +131,50 @@
         flex-wrap: wrap;
     }
     
-    .tab-btn {
+    .tab-btn, .profile-tab {
         flex: 1;
         min-width: 120px;
         text-align: center;
+        padding: 12px 15px;
+        font-size: 14px;
     }
     
     .favorites-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* اسلایدر در موبایل */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .slider-controls {
+        align-self: flex-end;
+    }
+    
+    .product-card {
+        min-width: 85vw !important;
+        margin: 0 7.5%;
+    }
+    
+    .slider-dots {
+        display: none;
+    }
+    
+    /* سیستم ورود در موبایل */
+    .auth-box {
+        padding: 30px 20px;
+    }
+    
+    .auth-header h1 {
+        font-size: 26px;
+    }
+    
+    .auth-tab {
+        font-size: 16px;
+        padding: 12px;
     }
 }
 
@@ -124,7 +194,7 @@
     
     .support-modal {
         width: 280px;
-        left: -140px;
+        max-width: 95vw;
     }
     
     .hamburger-menu {
@@ -180,4 +250,178 @@
     .item-details, .item-quantity, .item-total, .item-remove {
         justify-self: center;
     }
+    
+    /* اسلایدر در موبایل کوچک */
+    .product-card {
+        min-width: 90vw !important;
+        margin: 0 5%;
+    }
+    
+    .product-img {
+        height: 160px;
+        font-size: 22px;
+    }
+    
+    .product-info {
+        padding: 15px;
+    }
+    
+    .slider-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+    
+    /* پروفایل در موبایل کوچک */
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .user-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+    
+    .user-info h2 {
+        font-size: 22px;
+    }
+    
+    .recent-orders {
+        padding: 20px;
+    }
+    
+    /* سیستم ورود در موبایل کوچک */
+    .auth-box {
+        padding: 25px 15px;
+        margin: 0 10px;
+    }
+    
+    .auth-header h1 {
+        font-size: 24px;
+    }
+    
+    .auth-btn, .continue-guest {
+        padding: 15px;
+        font-size: 16px;
+    }
 }
+
+/* رسپانسیو برای دستگاه‌های خیلی کوچک */
+@media (max-width: 375px) {
+    .logo h1 {
+        font-size: 18px;
+    }
+    
+    .search-input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .search-btn {
+        padding: 0 20px;
+        font-size: 16px;
+    }
+    
+    .header-icons {
+        gap: 10px;
+    }
+    
+    .icon-link {
+        font-size: 18px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .category-card {
+        padding: 20px 10px;
+    }
+    
+    .category-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    /* پروفایل در موبایل خیلی کوچک */
+    .profile-tab {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .user-header {
+        padding: 20px;
+    }
+    
+    .stat-card h3 {
+        font-size: 28px;
+    }
+}
+
+/* رسپانسیو برای حالت landscape موبایل */
+@media (max-height: 600px) and (orientation: landscape) {
+    .auth-container {
+        padding: 20px;
+        min-height: auto;
+    }
+    
+    .auth-box {
+        padding: 30px 25px;
+    }
+    
+    .auth-header {
+        margin-bottom: 20px;
+    }
+    
+    .auth-header h1 {
+        font-size: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-input {
+        padding: 12px 15px;
+    }
+    
+    .auth-btn {
+        padding: 15px;
+    }
+}
+
+/* رسپانسیو برای چاپ */
+@media print {
+    .hamburger-menu,
+    .support-circle,
+    header,
+    .btn,
+    .slider-controls,
+    .search-container,
+    .header-icons {
+        display: none !important;
+    }
+    
+    .tracking-code {
+        border: 2px solid #000;
+        padding: 20px;
+    }
+    
+    .code {
+        border: 2px dashed #000;
+    }
+    
+    body {
+        border: none;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+        }
