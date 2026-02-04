@@ -1,5 +1,28 @@
 // مدیریت صفحه تکمیل خرید
 document.addEventListener('DOMContentLoaded', function() {
+    // اعتبارسنجی کاربر
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    
+    if (!currentUser || !currentUser.isLoggedIn) {
+        showNotification('برای تکمیل خرید باید وارد حساب کاربری خود شوید', 'error');
+        
+        setTimeout(() => {
+            window.location.href = 'profile.html?redirect=checkout.html';
+        }, 2000);
+        return;
+    }
+    
+    // بررسی سبد خرید
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (cart.length === 0) {
+        showNotification('سبد خرید شما خالی است', 'error');
+        
+        setTimeout(() => {
+            window.location.href = 'cart.html';
+        }, 2000);
+        return;
+    }
+    
     const checkoutForm = document.getElementById('checkout-form');
     const trackingSection = document.getElementById('tracking-section');
     
@@ -17,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     hideLoading();
                     
                     // پردازش موفقیت‌آمیز
-                    processOrder();
+                    processOrder(currentUser, cart);
                     
                     // مخفی کردن فرم و نمایش کد رهگیری
                     document.getElementById('checkout-form-section').style.display = 'none';
@@ -66,6 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
             showFieldError(phoneField, 'شماره تلفن معتبر وارد کنید.');
         }
         
+        // اعتبارسنجی کد پستی
+        const postalCodeField = document.getElementById('postalCode');
+        if (postalCodeField.value && !isValidPostalCode(postalCodeField.value)) {
+            isValid = false;
+            postalCodeField.style.borderColor = '#e74c3c';
+            showFieldError(postalCodeField, 'کد پستی ۱۰ رقمی وارد کنید.');
+        }
+        
         return isValid;
     }
     
@@ -77,8 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // اعتبارسنجی شماره تلفن
     function isValidPhone(phone) {
-        const re = /^[\d\s\-\(\)\+]{10,}$/;
-        return re.test(phone);
+        const re = /^09[0-9]{9}$/;
+        return re.test(phone.replace(/[\s\-]/g, ''));
+    }
+    
+    // اعتبارسنجی کد پستی
+    function isValidPostalCode(postalCode) {
+        const re = /^\d{10}$/;
+        return re.test(postalCode.replace(/\D/g, ''));
     }
     
     // نمایش خطای فیلد
@@ -102,7 +139,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // پردازش سفارش
-    function processOrder() {
+    function processOrder(user, cartItems) {
+        // محاسبه مبلغ کل
+        const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const discount = subtotal > 500000 ? 50000 : 0;
+        const shipping = 30000;
+        const total = subtotal - discount + shipping;
+        
         // ایجاد کد رهگیری تصادفی
         const trackingCode = 'TRK-' + 
             Math.floor(1000 + Math.random() * 9000) + '-' + 
@@ -112,23 +155,67 @@ document.addEventListener('DOMContentLoaded', function() {
         const orderNumber = 'ORD-' + new Date().getFullYear() + '-' + 
             Math.floor(1000 + Math.random() * 9000);
         
+        // ایجاد تاریخ سفارش
+        const orderDate = new Date().toLocaleDateString('fa-IR');
+        
+        // اطلاعات سفارش
+        const orderData = {
+            id: orderNumber,
+            trackingCode: trackingCode,
+            date: orderDate,
+            items: cartItems,
+            subtotal: subtotal,
+            discount: discount,
+            shipping: shipping,
+            total: total,
+            status: 'pending',
+            paymentMethod: document.querySelector('input[name="payment"]:checked').value === 'online' ? 'پرداخت آنلاین' : 'پرداخت در محل',
+            deliveryMethod: document.querySelector('input[name="delivery"]:checked').value === 'peyk' ? 'پیک موتوری' : 'پست پیشتاز',
+            customerInfo: {
+                name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                province: document.getElementById('province').value,
+                postalCode: document.getElementById('postalCode').value,
+                receiverPhone: document.getElementById('receiverPhone').value
+            }
+        };
+        
         // نمایش کد
         document.getElementById('tracking-code').textContent = trackingCode;
         
-        // ذخیره اطلاعات سفارش
-        const orderData = {
-            orderNumber: orderNumber,
-            trackingCode: trackingCode,
-            date: new Date().toLocaleDateString('fa-IR'),
-            total: '180,000 تومان',
-            paymentMethod: document.querySelector('input[name="payment"]:checked').value === 'online' ? 'پرداخت آنلاین' : 'پرداخت در محل',
-            deliveryMethod: document.querySelector('input[name="delivery"]:checked').value === 'peyk' ? 'پیک موتوری' : 'پست پیشتاز'
-        };
+        // نمایش جزئیات سفارش
+        const orderDetails = document.querySelector('.order-details ul');
+        if (orderDetails) {
+            orderDetails.innerHTML = `
+                <li><strong>شماره سفارش:</strong> ${orderNumber}</li>
+                <li><strong>تاریخ ثبت:</strong> ${orderDate}</li>
+                <li><strong>مبلغ کل:</strong> ${total.toLocaleString()} تومان</li>
+                <li><strong>روش پرداخت:</strong> ${orderData.paymentMethod}</li>
+                <li><strong>روش دریافت:</strong> ${orderData.deliveryMethod}</li>
+            `;
+        }
         
-        localStorage.setItem('lastOrder', JSON.stringify(orderData));
+        // ذخیره اطلاعات سفارش
+        saveOrderToHistory(user.id, orderData);
         
         // نمایش پیام موفقیت
         showNotification('سفارش شما با موفقیت ثبت شد!', 'success');
+    }
+    
+    // ذخیره سفارش در تاریخچه
+    function saveOrderToHistory(userId, orderData) {
+        // بارگذاری سفارشات قبلی کاربر
+        const userOrders = JSON.parse(localStorage.getItem(`orders_${userId}`) || '[]');
+        
+        // اضافه کردن سفارش جدید
+        userOrders.push(orderData);
+        localStorage.setItem(`orders_${userId}`, JSON.stringify(userOrders));
+        
+        // ذخیره اطلاعات آخرین سفارش
+        localStorage.setItem('lastOrder', JSON.stringify(orderData));
     }
     
     // نمایش لودینگ
@@ -167,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const badge = document.querySelector('.badge');
         if (badge) {
             badge.textContent = '0';
+            badge.style.display = 'none';
         }
         localStorage.setItem('cartCount', '0');
     }
@@ -202,38 +290,31 @@ document.addEventListener('DOMContentLoaded', function() {
             color: #ff6b9d;
             margin-bottom: 15px;
         }
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 25px;
-            border-radius: 8px;
-            color: white;
-            z-index: 10000;
-            animation: slideDown 0.3s ease;
-        }
-        .notification.success {
-            background-color: #2ecc71;
-        }
-        @keyframes slideDown {
-            from { top: -100px; }
-            to { top: 20px; }
+        .field-error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: right;
         }
         
         @media print {
             .hamburger-menu,
             .support-circle,
             header,
-            .btn {
+            .btn,
+            .no-print {
                 display: none !important;
             }
             .tracking-code {
                 border: 2px solid #000;
                 padding: 20px;
+                page-break-inside: avoid;
             }
             .code {
                 border: 2px dashed #000;
+            }
+            body {
+                border: none;
             }
         }
     `;
